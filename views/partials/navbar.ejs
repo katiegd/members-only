@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <div class="header">
+    <a href="/"><h1>The Member Ship</h1></a>
+  </div>
+  <div class="header-logo">
+    <a href="/"
+      ><img src="/images/spaceship.svg" alt="Member Ship" width="40px"
+    /></a>
+  </div>
+  <div class="links">
+    <% if (currentUser) { %>
+    <a href="/newMessage">New Message</a>
+    <a href="/logout">Log Out</a>
+    <% } else { %>
+    <a href="/signup">Sign Up</a>
+    <a href="/login">Log In</a>
+    <% } %>
+  </div>
+</nav>

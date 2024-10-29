@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Member Ship</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="shortcut icon"
+      href="/images/spaceship.svg"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <%- include("partials/navbar") %>
+      <div class="main-content">
+        <h1>Join the Ship</h1>
+        <form action="/signup" method="post" class="sign-up-form">
+          <label for="firstName">First Name</label>
+          <input
+            id="firstName"
+            name="firstName"
+            type="text"
+            value="<%=data ?
+          data.firstName : ''%>"
+            required
+          />
+          <label for="lastName">Last Name</label>
+          <input
+            id="lastName"
+            name="lastName"
+            type="text"
+            value="<%=data ?
+          data.lastName : ''%>"
+            required
+          />
+          <label for="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            value="<%=data ?
+          data.email : ''%>"
+            required
+          />
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" required />
+          <label for="password2">Confirm Password</label>
+          <input id="password2" name="password2" type="password" required />
+          <% if(errors && errors.length > 0) { %>
+          <ul class="sign-up-errs">
+            <% errors.forEach(error => { %>
+            <li><%=error.msg%></li>
+            <% }) %>
+          </ul>
+          <% } %>
+          <button type="submit" class="sign-up-btn">Sign up!</button>
+        </form>
+      </div>
+      <%- include("partials/footer") %>
+    </div>
+  </body>
+</html>

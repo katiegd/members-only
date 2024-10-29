@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Member Ship</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link
+      rel="shortcut icon"
+      href="/images/spaceship.svg"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <%- include("partials/navbar") %>
+      <div class="main-content">
+        <% if(currentUser) { %>        
+          <h1>Welcome aboard, <%=currentUser.firstname%>.</h1>
+          <a href="/newMessage" class="add-message">Add a Message</a>
+          <div class="message-board">
+       <% } else { %>
+        <h1>Welcome to the Member Ship.</h1>
+        <h2>(You must be logged in to view the ship's secrets!)</h2>
+        <div class="message-board-hidden">
+      <% } %>
+          <% messages.forEach((message) => { %>
+          <div class="message-container">
+            <div class="user-timestamp">
+              <div class="user">
+                <% if(currentUser) { %>
+                <p><%=message.firstname%> <%=message.lastname%></p>
+                <% } else { %>
+                <p>Anonymous</p>
+                <% } %>
+              </div>
+              <div class="date-time">
+                <p>
+                  Posted at <%=message.timestamp.formattedTime%> on
+                  <%=message.timestamp.formattedDate%>                
+                </p>
+                <img src="/images/delete.svg" class="delete-btn">
+              </div>
+            </div>
+            <div class="title-message">
+              <h2><%=message.title%></h2>
+              <p><%=message.message%></p>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+      <%- include("partials/footer") %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+
+:root {
+  --bg-color: hsl(251, 45%, 18%);
+  --bg-color-light: hsl(251, 48%, 24%);
+  --bg-color-lightest: hsl(251, 49%, 40%);
+  --bg-color-dark: hsla(251, 48%, 13%, 0.6);
+
+  --font-light: #eff2d9;
+  --font-purple: hsl(251, 49%, 70%);
+
+  --err: hsl(0, 100%, 35%);
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "Lexend", sans-serif;
+  color: var(--font-light);
+  background: linear-gradient(var(--bg-color-light), var(--bg-color));
+}
+
+a {
+  color: var(--font-light);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  transition: all 300ms ease;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1024px;
+  padding: 0 10vw;
+  height: calc(100vh - 2.5rem);
+  padding-bottom: 2.5rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  transition: all 300ms ease;
+}
+
+.links a:hover {
+  background-color: var(--bg-color);
+}
+
+.header-logo {
+  transform: rotate(45deg);
+  transition: all 500ms ease;
+}
+
+.header-logo:hover {
+  cursor: pointer;
+  transform: rotate(0deg);
+}
+
+.sign-up-form {
+  padding: 3rem;
+  background-color: var(--bg-color-dark);
+  border-radius: 1rem;
+  border: 1px solid #ffffff13;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 50%;
+  min-width: 400px;
+}
+
+.sign-up-form input {
+  font-family: "Lexend", sans-serif;
+  color: var(--font-purple);
+  background-color: var(--bg-color-light);
+  border: none;
+  height: 2rem;
+  margin-bottom: 1rem;
+  border-radius: 0.8rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.sign-up-btn {
+  font-family: "Lexend", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 0.5rem 0.5rem;
+  background-color: hsl(251, 49%, 50%);
+  color: var(--font-light);
+  border-radius: 1rem;
+  margin-top: 1rem;
+  border: none;
+  transition: background-color 300ms ease;
+}
+
+.sign-up-btn:hover {
+  cursor: pointer;
+  background-color: hsl(251, 55%, 55%);
+}
+
+.sign-up-errs {
+  list-style: inside;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  background-color: var(--err);
+  font-size: 0.8rem;
+}
+
+.message-board,
+.message-board-hidden {
+  background-color: var(--bg-color-dark);
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 0px 3px 0px,
+    rgba(8, 8, 8, 0.05) 0px 0px 0px 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 70%;
+  padding: 2rem;
+  border-radius: 2rem;
+}
+
+.message-board-hidden {
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.message-container {
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  border-radius: 1rem;
+  box-shadow: rgba(232, 232, 232, 0.02) 0px 0px 3px 0px,
+    rgba(231, 231, 231, 0.05) 0px 0px 0px 1px;
+}
+.user-timestamp {
+  font-weight: 600;
+  background-color: var(--bg-color-light);
+  border-radius: 1rem 1rem 0 0;
+  padding: 0.5rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.title-message {
+  border-radius: 0 0 1rem 1rem;
+  background-color: var(--bg-color);
+  padding: 0.5rem 2rem;
+}
+
+.date-time {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.add-message {
+  padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
+  background-color: var(--bg-color);
+  border: 3px solid var(--bg-color);
+  transition: all 300ms ease;
+}
+
+.add-message:hover {
+  border: 3px solid var(--bg-color-lightest);
+}
+
+.delete-btn {
+  border-radius: 50%;
+  padding: 0.25rem;
+  width: 20px;
+  height: 20px;
+}
+
+.delete-btn:hover {
+  cursor: pointer;
+  background-color: var(--err);
+}
