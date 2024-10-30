@@ -10,6 +10,7 @@ const indexRouter = require("./routes/index");
 const signUpRouter = require("./routes/signup");
 const loginRouter = require("./routes/login");
 const newMessageRouter = require("./routes/newMessage");
+const deleteRouter = require("./routes/delete");
 
 // Set up views path and ejs view engine
 app.set("views", path.join(__dirname, "views"));
@@ -38,6 +39,7 @@ app.use("/", indexRouter);
 app.use("/signup", signUpRouter);
 app.use("/login", loginRouter);
 app.use("/newMessage", newMessageRouter);
+app.use("/delete", deleteRouter);
 app.get("/logout", (req, res, next) => {
   req.logout((err) => {
     if (err) {

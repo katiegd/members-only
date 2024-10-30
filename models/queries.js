@@ -21,7 +21,7 @@ function formatDate(date) {
 
 async function getAllMessages() {
   const { rows } = await pool.query(
-    "SELECT messages.id, messages.title, messages.message, messages.timestamp, members.firstname, members.lastname FROM messages JOIN members ON messages.user_id = members.id"
+    "SELECT messages.id, messages.title, messages.message, messages.timestamp, members.firstname, members.lastname FROM messages JOIN members ON messages.user_id = members.id ORDER BY messages.timestamp DESC"
   );
 
   const formattedMessages = rows.map((message) => ({
@@ -31,6 +31,19 @@ async function getAllMessages() {
   return formattedMessages;
 }
 
+async function addNewMessage(userId, title, message) {
+  await pool.query(
+    "INSERT INTO messages (user_id, title, message) VALUES ($1, $2, $3)",
+    [userId, title, message]
+  );
+}
+
+async function deleteMessage(messageId) {
+  await pool.query("DELETE FROM messages WHERE id = $1", [messageId]);
+}
+
 module.exports = {
   getAllMessages,
+  addNewMessage,
+  deleteMessage,
 };

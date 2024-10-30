@@ -1,9 +1,18 @@
 const db = require("../models/queries");
 
-async function newMessageGet(req, res) {
-  res.render("newMessage");
+async function newMessagePost(req, res, next) {
+  if (!req.user) {
+    return res.redirect("/login");
+  }
+
+  const { title, message } = req.body;
+  const userId = req.user.id;
+
+  await db.addNewMessage(userId, title, message);
+
+  res.redirect("/");
 }
 
 module.exports = {
-  newMessageGet,
+  newMessagePost,
 };

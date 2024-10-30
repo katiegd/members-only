@@ -38,6 +38,7 @@ async function signUpGet(req, res) {
 
 async function signUpPost(req, res, next) {
   const errors = validationResult(req);
+  const isAdmin = req.body.isadmin ? true : false;
   if (!errors.isEmpty()) {
     return res
       .status(400)
@@ -53,8 +54,8 @@ async function signUpPost(req, res, next) {
   try {
     const password = await bcrypt.hash(plainPassword, 10);
     await pool.query(
-      "INSERT INTO members (firstname, lastname, username, password) VALUES ($1, $2, $3, $4)",
-      [firstName, lastName, username, password]
+      "INSERT INTO members (firstname, lastname, username, password, isadmin) VALUES ($1, $2, $3, $4, $5)",
+      [firstName, lastName, username, password, isAdmin]
     );
     res.redirect("/login");
   } catch (err) {

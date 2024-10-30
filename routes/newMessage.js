@@ -3,6 +3,6 @@ const route = express();
 
 const newMessageController = require("../controllers/newMessageController");
 
-route.get("/", newMessageController.newMessageGet);
+route.post("/", newMessageController.newMessagePost);
 
 module.exports = route;

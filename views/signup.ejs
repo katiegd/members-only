@@ -48,6 +48,10 @@
           <input id="password" name="password" type="password" required />
           <label for="password2">Confirm Password</label>
           <input id="password2" name="password2" type="password" required />
+          <label for="isadmin" class="secret-box-container">
+            <input id="isadmin" name="isadmin" type="checkbox" />
+            <span class="secret-box"></span
+          ></label>
           <% if(errors && errors.length > 0) { %>
           <ul class="sign-up-errs">
             <% errors.forEach(error => { %>

@@ -17,7 +17,7 @@
       <div class="main-content">
         <h1>New Message</h1>
         <form action="/newMessage" method="post" class="sign-up-form">
-          <input type="hidden" name="id" value="<%=currentUser.id%>" />
+          <input type="hidden" name="id" value="<%=currentUser%>" />
           <label for="name">Title</label>
           <input type="text" name="title" id="title" />
           <label for="message">Message</label>
