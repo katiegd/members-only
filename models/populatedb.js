@@ -43,9 +43,9 @@ async function main() {
   const client = new Client({
     connectionString:
       process.env.DATABASE_URL_LOCAL || process.env.DATABASE_URL_RENDER,
-    // ssl: {
-    //   rejectUnauthorized: false,
-    // },
+    ssl: {
+      rejectUnauthorized: false,
+    },
   });
   try {
     await client.connect();
