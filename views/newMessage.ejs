@@ -16,6 +16,20 @@
       <%- include("partials/navbar") %>
       <div class="main-content">
         <h1>New Message</h1>
+        <form action="/newMessage" method="post" class="sign-up-form">
+          <input type="hidden" name="id" value="<%=currentUser.id%>" />
+          <label for="name">Title</label>
+          <input type="text" name="title" id="title" />
+          <label for="message">Message</label>
+          <textarea
+            name="message"
+            id="message"
+            cols="30"
+            rows="10"
+            required
+          ></textarea>
+          <button type="submit" class="sign-up-btn">Submit</button>
+        </form>
       </div>
       <%- include("partials/footer") %>
     </div>

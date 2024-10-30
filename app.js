@@ -22,11 +22,11 @@ app.use(
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
+    cookie: { maxAge: 86400000 },
   })
 );
-app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false })); // For form data
 
 // Current user middleware
 app.use((req, res, next) => {
@@ -48,4 +48,5 @@ app.get("/logout", (req, res, next) => {
 });
 
 const PORT = 3000 || process.env.PORT;
+
 app.listen(PORT, () => console.log(`listening on port ${PORT}.`));

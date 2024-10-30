@@ -54,7 +54,9 @@ async function loginPost(req, res, next) {
       return next(err);
     }
     if (!user) {
-      return res.redirect("/login?error=" + encodeURIComponent(info.message));
+      return res.redirect("/login?error=" + encodeURIComponent(info.message), {
+        message: "User was not found.",
+      }); // Check to see if this can render a message.
     }
 
     req.logIn(user, (err) => {
