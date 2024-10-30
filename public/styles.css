@@ -37,7 +37,6 @@ a {
   margin: 0 auto;
   max-width: 1024px;
   padding: 0 10vw;
-  height: calc(100vh - 2.5rem);
   padding-bottom: 2.5rem;
 }
 
@@ -45,7 +44,6 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
 }
 
 .main-content {
@@ -59,6 +57,7 @@ a {
 footer {
   display: flex;
   justify-content: center;
+  margin-top: 3rem;
 }
 
 .footer {
@@ -121,9 +120,6 @@ footer {
 
 .new-message-form {
   padding: 1rem;
-  background-color: var(--bg-color-dark);
-  border-radius: 1rem;
-  border: 1px solid #ffffff13;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -179,6 +175,7 @@ footer {
   gap: 2rem;
   padding: 2rem;
   border-radius: 2rem;
+  max-height: 70vh;
 }
 
 .message-board-hidden {
@@ -190,6 +187,7 @@ footer {
   gap: 2rem;
   padding: 2rem;
   border-radius: 2rem;
+  width: 80%;
 }
 
 .message-board-hidden {
@@ -197,12 +195,16 @@ footer {
   -webkit-filter: blur(8px);
   -webkit-user-select: none;
   user-select: none;
+  height: 58vh;
+  overflow: auto;
 }
 
 .messages-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  height: 70vh;
+  overflow: auto;
 }
 
 .message-container {
