@@ -185,7 +185,8 @@ footer {
   align-items: center;
 }
 
-.add-message {
+.add-message,
+.general-btn {
   padding: 0.5rem 1rem;
   margin-bottom: 2rem;
   background-color: var(--bg-color);
@@ -193,7 +194,8 @@ footer {
   transition: all 300ms ease;
 }
 
-.add-message:hover {
+.add-message:hover,
+.general-btn:hover {
   border: 3px solid var(--bg-color-lightest);
 }
 
