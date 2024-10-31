@@ -1,7 +1,9 @@
 const express = require("express");
 const session = require("express-session");
+const pgSession = require("connect-pg-simple")(session);
 const passport = require("passport");
 const path = require("node:path");
+const pool = require("./models/db");
 
 const app = express();
 
@@ -20,6 +22,9 @@ app.use(express.static("public"));
 // Session config
 app.use(
   session({
+    store: new pgSession({
+      pool: pool,
+    }),
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
