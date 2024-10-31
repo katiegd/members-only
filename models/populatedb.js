@@ -56,7 +56,7 @@ async function main() {
   });
 
   if (process.env.DATABASE_URL_RENDER) {
-    pool.ssl = { rejectUnauthorized: false };
+    client.ssl = { rejectUnauthorized: false };
   }
 
   try {
