@@ -53,11 +53,8 @@ async function main() {
   const client = new Client({
     connectionString:
       process.env.DATABASE_URL_LOCAL || process.env.DATABASE_URL_RENDER,
+    ssl: { rejectUnauthorized: false },
   });
-
-  if (process.env.DATABASE_URL_RENDER) {
-    client.ssl = { rejectUnauthorized: false };
-  }
 
   try {
     await client.connect();

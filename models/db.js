@@ -4,10 +4,7 @@ require("dotenv").config();
 const pool = new Pool({
   connectionString:
     process.env.DATABASE_URL_LOCAL || process.env.DATABASE_URL_RENDER,
+  ssl: { rejectUnauthorized: false },
 });
-
-if (process.env.DATABASE_URL_RENDER) {
-  pool.ssl = { rejectUnauthorized: false };
-}
 
 module.exports = pool;
