@@ -51,9 +51,10 @@ VALUES
 async function main() {
   console.log("Seeding...");
   const client = new Client({
-    connectionString:
-      process.env.DATABASE_URL_LOCAL || process.env.DATABASE_URL_RENDER,
-    ssl: { rejectUnauthorized: false },
+    connectionString: process.env.DATABASE_URL_RENDER,
+    ssl: {
+      rejectUnauthorized: false,
+    },
   });
 
   try {
