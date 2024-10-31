@@ -61,6 +61,7 @@ async function main() {
 
   try {
     await client.connect();
+    console.log("Connected to database.");
     await client.query(dropTables);
     await client.query(createSessTable);
     console.log("Session table created.");
