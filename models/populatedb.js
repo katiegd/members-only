@@ -1,7 +1,7 @@
 const { Client } = require("pg");
 require("dotenv").config();
 
-const dropTables = `DROP TABLE IF EXISTS members, messages`;
+const dropTables = `DROP TABLE IF EXISTS members, messages, session`;
 
 const createMemberTable = `CREATE TABLE IF NOT EXISTS members (
 	id int4 GENERATED ALWAYS AS IDENTITY( INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START 1 CACHE 1 NO CYCLE) NOT NULL,
@@ -25,6 +25,16 @@ const createMessageTable = `CREATE TABLE IF NOT EXISTS messages (
 );
 `;
 
+const createSessTable = `CREATE TABLE IF NOT EXISTS "session" (
+  "sid" VARCHAR NOT NULL COLLATE "default",
+  "sess" JSON NOT NULL,
+  "expire" TIMESTAMPTZ NOT NULL,
+  PRIMARY KEY ("sid")
+);
+
+CREATE INDEX "IDX_sessions_expire" ON "session" ("expire");
+`;
+
 const createDemoUsers = `INSERT INTO members (firstname, lastname, username, password, memstatus, isadmin)
 VALUES
     ('Alice', 'Smith', 'alice@example.com', '$2a$10$XzZeC.v8YHE5fX8/Ee.CleOuHZxKUb1FZ7V9zLO9vZ4Lz6AYXqpmK', 'true', true),
@@ -43,13 +53,17 @@ async function main() {
   const client = new Client({
     connectionString:
       process.env.DATABASE_URL_LOCAL || process.env.DATABASE_URL_RENDER,
-    ssl: {
-      rejectUnauthorized: false,
-    },
   });
+
+  if (process.env.DATABASE_URL_RENDER) {
+    pool.ssl = { rejectUnauthorized: false };
+  }
+
   try {
     await client.connect();
     await client.query(dropTables);
+    await client.query(createSessTable);
+    console.log("Session table created.");
     await client.query(createMemberTable);
     await client.query(createDemoUsers);
     console.log("Member table and users created.");
